@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff; /* Set the background color to white */
+}
+
+.coming-soon-container {
+    text-align: center;
+    margin: 50px auto;
+    max-width: 600px;
+    background-color: #fff; /* Optionally, set a white background for the container */
+    padding: 20px; /* Add some padding for better visual separation */
+    border-radius: 10px; /* Optionally, add rounded corners to the container */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optionally, add a subtle box shadow */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.social-logo {
+    width: 20px;
+    height: auto;
+    margin-right: 5px;
+}
+
+h1 {
+    color: #333;
+}
+
+p {
+    color: #555;
+    line-height: 1.6;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+}
