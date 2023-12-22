@@ -1,53 +1,184 @@
-body {
-    font-family: Arial, sans-serif;
+/* Reset styles */
+body, h1, h2, p, ul, li {
     margin: 0;
     padding: 0;
-    background-color: #fff; /* Set the background color to white */
 }
 
-.coming-soon-container {
-    text-align: center;
-    margin: 50px auto;
-    max-width: 600px;
-    background-color: #fff; /* Optionally, set a white background for the container */
-    padding: 20px; /* Add some padding for better visual separation */
-    border-radius: 10px; /* Optionally, add rounded corners to the container */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optionally, add a subtle box shadow */
+/* Container styles for centering content */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
+/* Top Header styles */
+.top-header {
+    background-color: #fff; /* White background */
+    color: #333; /* Text color */
+    padding: 10px 0; /* Adjust padding as needed */
 }
 
-.social-logo {
-    width: 20px;
-    height: auto;
-/**/    margin-right: 5px;
+.top-header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Center and separate logo and header content */
 }
 
-h1 {
-    color: #333;
+.logo img {
+    max-height: 50px; /* Adjust max-height as needed */
+    margin-right: 20px; /* Adjust margin as needed */
 }
 
-p {
-    color: #555;
-    line-height: 1.6;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-    margin: 20px 0;
-}
-
-li {
+.header-content h1 {
     display: inline-block;
-    margin-right: 10px;
 }
 
-a {
+nav {
+    display: flex;
+    align-items: center; /* Center navigation vertically within the white box */
+}
+
+nav a {
+    margin-left: 15px;
     text-decoration: none;
-    color: #007BFF;
+    color: #333; /* Navigation text color */
     font-weight: bold;
 }
+
+nav a:last-child {
+    margin-left: auto; /* Push the last navigation item (furthest to the right) to the right */
+}
+
+
+/* Gray Rectangle styles */
+.gray-rectangle {
+    background-color: #424242; /* Gray color */
+    height: 150px; /* Adjust padding to increase height */
+    justify-content: center; /* Center text vertically */
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 16px rgba(10, 10, 10, 10); /* Add a shadow to the bottom */
+}
+
+/*.gray-rectangle {
+    background-color: #424242; *//**//* Gray color *//*
+    position: relative;
+    padding: 20px; *//* Adjust padding as needed *//*
+    display: flex;
+    flex-direction: column;
+    justify-content: center; *//* Center text vertically *//*
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); *//* Add a shadow *//*
+}*/
+
+
+
+/*.gray-rectangle::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px; *//* Adjust the height of the shadow *//*
+    background: rgba(0, 0, 0, 0.1); *//* Shadow color *//*
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); *//* Add a shadow to the bottom *//*
+}*/
+
+.gray-rectangle p {
+    color: #fff; /* Text color */
+    margin: 0; /* Remove default margin */
+    font-size: 30px; /* Set font size to 30 pixels */
+    line-height: 1.5; /* Set line height for better readability */
+    padding-left: 20px; /* Add padding to the left */
+}
+
+/* ... (previous styles) ... */
+
+/* Main Section styles */
+.main-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    height: 100vh; /* Set to full height of the viewport */
+    padding: 40px 0; /* Adjust padding as needed */
+}
+
+/* Text Section styles */
+.text-section {
+    flex: 1;
+    border: 1px solid #ccc; /* Border for visibility */
+    padding: 20px; /* Adjust padding as needed */
+}
+
+.text-section h3 {
+    font-size: 24px; /* Set title font size */
+    margin-bottom: 10px; /* Adjust margin as needed */
+}
+
+/* ... (previous styles) ... */
+
+/* Upper Section specific styles */
+.upper-section {
+    text-align: right;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    height: 100%;
+}
+
+/*
+.upper-section h3,
+.upper-section p {
+    margin: 0; */
+/* Remove default margin to center title and text *//*
+
+    text-align: center; */
+/* Center the text within the right-aligned box *//*
+
+    width: 100%; */
+/* Ensure the text takes the full width of the box *//*
+
+}
+*/
+
+
+
+
+/* Middle Section specific styles */
+.middle-section {
+    text-align: left;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100%;
+}
+
+/* Bottom Section specific styles */
+.bottom-section {
+    text-align: center;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-center;
+    justify-content: center;
+    height: 100%;
+}
+
+/* Sub-Section styles */
+.sub-section {
+    margin-top: 10px; /* Adjust margin as needed */
+}
+
+footer {
+    background-color: #424242; /* Gray color */
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+
+
