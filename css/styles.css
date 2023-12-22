@@ -90,22 +90,21 @@ nav a:last-child {
 }
 
 /* Text Section styles */
-.text-section {
-    flex: 1;
-    border: 1px solid #ccc; /* Border for visibility */
-    padding: 20px; /* Adjust padding as needed */
-}
+/*.text-section {
+    border: 1px solid #ccc; *//* Border for visibility *//*
+    padding: 20px; *//* Adjust padding as needed *//*
+}*/
 
-.text-section h3 {
-    font-size: 24px; /* Set title font size */
-    margin-bottom: 10px; /* Adjust margin as needed */
-}
+/*.text-section h3 {
+    font-size: 24px; *//* Set title font size *//*
+    margin-bottom: 10px; *//* Adjust margin as needed *//*
+}*/
 
 /* ... (previous styles) ... */
 
 /* Upper Section specific styles */
 .upper-section {
-    text-align: right;
+    text-align: center;
     border: none;
     display: flex;
     flex-direction: column;
@@ -114,27 +113,9 @@ nav a:last-child {
     height: 100%;
 }
 
-/*
-.upper-section h3,
-.upper-section p {
-    margin: 0; */
-/* Remove default margin to center title and text *//*
-
-    text-align: center; */
-/* Center the text within the right-aligned box *//*
-
-    width: 100%; */
-/* Ensure the text takes the full width of the box *//*
-
-}
-*/
-
-
-
-
 /* Middle Section specific styles */
 .middle-section {
-    text-align: left;
+    text-align: center;
     border: none;
     display: flex;
     flex-direction: column;
@@ -154,9 +135,26 @@ nav a:last-child {
     height: 100%;
 }
 
-/* Sub-Section styles */
-.sub-section {
-    margin-top: 10px; /* Adjust margin as needed */
+.text-box-container {
+    border: none;
+    display: flex;
+    justify-content: center; /* Center the text boxes horizontally */
+}
+
+
+.text-box {
+    flex: 1; /* Allow text boxes to take equal width */
+    padding: 10px; /* Adjust padding as needed */
+    border: none; /* Optional: Add a border for visual separation */
+    max-width: 500px;
+}
+
+.left-box {
+    margin-right: 10px; /* Add spacing between the text boxes */
+}
+
+.right-box {
+    margin-left: 10px; /* Add spacing between the text boxes */
 }
 
 footer {
