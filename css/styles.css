@@ -19,6 +19,15 @@ body, h1, h2, p, ul, li {
     background-color: #fff; /* White background */
     color: #333; /* Text color */
     padding: 10px 0; /* Adjust padding as needed */
+    border-bottom: 5px solid black;
+}
+
+/* Add styles for fixed header */
+.fixed-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Adjust the z-index as needed */
 }
 
 .top-header .container {
