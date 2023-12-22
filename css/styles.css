@@ -1,6 +1,8 @@
 /* Reset styles */
 body, h1, h2, p, ul, li {
     margin: 0;
+    display: flex;
+    flex-direction: column;
     padding: 0;
     font-family: 'Source Sans Pro', sans-serif;
 }
@@ -82,6 +84,7 @@ nav a:last-child {
 /* Main Section styles */
 .main-section {
     display: flex;
+    flex: 1;
     flex-direction: column;
     justify-content: space-between;
     align-items: stretch;
@@ -100,7 +103,6 @@ nav a:last-child {
     margin-bottom: 10px; *//* Adjust margin as needed *//*
 }*/
 
-/* ... (previous styles) ... */
 
 /* Upper Section specific styles */
 .upper-section {
@@ -151,7 +153,10 @@ nav a:last-child {
 
 .left-box {
     margin-right: 10px; /* Add spacing between the text boxes */
+
+
 }
+
 
 .right-box {
     margin-left: 10px; /* Add spacing between the text boxes */
@@ -167,6 +172,9 @@ footer {
 
 .contact-section {
     max-width: 300px; /* Adjust max-width as needed */
+    margin-top: auto;
+
+
 
 }
 
