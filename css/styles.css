@@ -39,6 +39,7 @@ body, h1, h2, p, ul, li {
 .logo img {
     max-height: 50px; /* Adjust max-height as needed */
     margin-right: 20px; /* Adjust margin as needed */
+    height: auto;
 }
 
 .header-content h1 {
