@@ -1,4 +1,4 @@
-<!-- common-elements.js -->
+// common-elements.js 
 document.addEventListener('DOMContentLoaded', function() {
     fetch('common-head.html')
         .then(response => response.text())
