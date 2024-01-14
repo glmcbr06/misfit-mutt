@@ -1,0 +1,6 @@
+# robots.txt for https://www.misfitmuttsolutions.com/
+
+User-agent: *
+Disallow:
+
+Sitemap: https://www.misfitmuttsolutions.com/sitemap.xml

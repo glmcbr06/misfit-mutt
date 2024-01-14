@@ -1,3 +1,4 @@
+// script.js
 document.addEventListener('DOMContentLoaded', function() {
     // Smooth scroll to the contact section when the "Contact" link is clicked
     var scrollLinks = document.querySelectorAll('.scroll-to-contact');
