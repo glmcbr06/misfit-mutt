@@ -10,13 +10,13 @@
 
     <!-- About Page -->
   <url>
-    <loc>https://www.misfitmuttsolutions.com/about.html</loc>
+    <loc>https://www.misfitmuttsolutions.com/about</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <!-- Services Page -->
   <url>
-    <loc>https://www.misfitmuttsolutions.com/services.html</loc>
+    <loc>https://www.misfitmuttsolutions.com/services</loc>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
