@@ -4,17 +4,17 @@ const app = express();
 const port = 3000;
 
 // Serve static files from 'public' directory
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname)));
 
 // Route to serve the homepage (index.html) when the root is accessed
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // Middleware for serving .html files when no extension is provided in the URL
 app.use((req, res, next) => {
     if (req.path.indexOf('.') === -1) {
-        var file = path.join(__dirname, 'public', req.path + '.html');
+        var file = path.join(__dirname, req.path + '.html');
         
         // Set the Content-Type to 'text/html' for HTML files
         res.setHeader('Content-Type', 'text/html');
@@ -41,14 +41,14 @@ app.listen(port, () => {
 });
 
 app.get('/', (req, res) => {
-    const indexPath = path.join(__dirname, 'public', 'index.html');
+    const indexPath = path.join(__dirname, 'index.html');
     console.log("Serving the home page:", indexPath);
     res.sendFile(indexPath);
 });
 
 app.use((req, res, next) => {
     if (req.path.indexOf('.') === -1) {
-        var file = path.join(__dirname, 'public', req.path + '.html');
+        var file = path.join(__dirname, req.path + '.html');
         console.log("Attempting to serve:", file);
         res.setHeader('Content-Type', 'text/html');
         res.sendFile(file, err => {
