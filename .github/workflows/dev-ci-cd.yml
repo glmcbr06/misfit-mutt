@@ -23,4 +23,5 @@ jobs:
         echo "$SSH_PRIVATE_KEY" > ~/.ssh/dev_key
         chmod 600 ~/.ssh/dev_key
         ssh-keyscan $HOST >> ~/.ssh/known_hosts
+        ssh-add -k ~/.ssh/dev_key
         ssh $USER@$HOST
