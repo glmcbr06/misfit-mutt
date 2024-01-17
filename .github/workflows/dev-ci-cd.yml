@@ -30,7 +30,7 @@ jobs:
           # Commands to run on the GCE instance
           # These should be the steps to deploy your application
           # Example:
-          # cd /path/to/your/project
-          # git pull
+          cd /var/www/html/misfit-mutt
+          git pull
           # Any other deployment commands
         ENDSSH
