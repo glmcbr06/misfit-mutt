@@ -23,4 +23,4 @@ jobs:
         echo "$SSH_PRIVATE_KEY" > ~/.ssh/dev_key
         chmod 600 ~/.ssh/dev_key
         ssh-keyscan $HOST >> ~/.ssh/known_hosts
-        ssh -T -i ~/.ssh/dev_key $USER@$HOST "whoami"
+        ssh $USER@$HOST
