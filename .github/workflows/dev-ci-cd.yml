@@ -4,7 +4,7 @@ on:
   push:
     branches:
         - 'feature/**'
-        - '!master'   # excludes master
+        # - '!master'   # excludes master
 
 jobs:
   build:
