@@ -1,11 +1,9 @@
-name: CI/CD Pipeline
+name: CI/CD DEV Pipeline
 
 on:
   push:
     branches:
-        - '*'         # matches every branch that doesn't contain a '/'
-        - '*/*'       # matches every branch containing a single '/'
-        - '**'        # matches every branch
+        - 'feature/**'
         - '!master'   # excludes master
 
 jobs:
