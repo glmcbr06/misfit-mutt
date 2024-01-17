@@ -26,5 +26,5 @@ jobs:
           ssh-keyscan $HOST >> ~/.ssh/known_hosts
 
           # SSH TO DEV INSTANCE
-          ssh -i ~/.ssh/dev_key $USER@HOST << 'ENDSSH'
+          ssh -i ~/.ssh/dev_key $USER@$HOST << 'ENDSSH'
           ENDSSH
