@@ -7,13 +7,20 @@ on:
         # - '!master'   # excludes master
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Build step
-      run: echo "Building project"
-    - name: Test step
-      run: echo "Running tests"
-    - name: Deploy step
-      run: echo "Deploying to server"
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Deploy to DEV instance
+        env:
+          KEY: ${{ secrets.GCP_DEV_KEY }}
+          HOST: ${{ secrets.GCP_DEV_HOST }}
+          USER: ${{ secrets.GCP_DEV_USER }}
+        run: |
+          # SETUP SSH KEY IN GIT ACTIONS RUNNER ENV
+          mkdir -p ~/.ssh
+          echo "$KEY" > ~/.ssh/dev_key
+          chmod 600 ~/.ssh/dev_key
+          ssh-keyscan $HOST >> ~/.ssh/known_hosts
