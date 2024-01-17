@@ -19,9 +19,14 @@ jobs:
         HOST: ${{ secrets.GCP_DEV_HOST }}
         USER: ${{ secrets.GCP_DEV_USER }}
       run: |
+        # Start the SSH agent
+        eval "$(ssh-agent -s)"
+        # Add the SSH key to the agent
         mkdir -p ~/.ssh
         echo "$SSH_PRIVATE_KEY" > ~/.ssh/dev_key
         chmod 600 ~/.ssh/dev_key
-        ssh-keyscan $HOST >> ~/.ssh/known_hosts
         ssh-add -k ~/.ssh/dev_key
+        # Add the host to the known hosts
+        ssh-keyscan $HOST >> ~/.ssh/known_hosts
+        # SSH into the GCE instance
         ssh $USER@$HOST
