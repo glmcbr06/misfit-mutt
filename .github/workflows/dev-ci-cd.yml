@@ -10,20 +10,17 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+    - name: Checkout Repository
+      uses: actions/checkout@v2
 
-      - name: Deploy to DEV instance
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.GCP_DEV_KEY }}
-          HOST: ${{ secrets.GCP_DEV_HOST }}
-          USER: ${{ secrets.GCP_DEV_USER }}
-        run: |
-          # SETUP SSH KEY IN GIT ACTIONS RUNNER ENV
-          mkdir -p ~/.ssh
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/dev_key
-          chmod 600 ~/.ssh/dev_key
-          ssh-keyscan $HOST >> ~/.ssh/known_hosts
-
-          # SSH TO DEV INSTANCE
-          ssh -T -i ~/.ssh/dev_key -vvv $USER@$HOST "echo 'SSH Test'"
+    - name: Deploy to GCE Instance
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.GCP_DEV_KEY }}
+        HOST: ${{ secrets.GCP_DEV_HOST }}
+        USER: ${{ secrets.GCP_DEV_USER }}
+      run: |
+        mkdir -p ~/.ssh
+        echo "$SSH_PRIVATE_KEY" > ~/.ssh/dev_key
+        chmod 600 ~/.ssh/dev_key
+        ssh-keyscan $HOST >> ~/.ssh/known_hosts
+        ssh -T -i ~/.ssh/dev_key $USER@$HOST "whoami"
