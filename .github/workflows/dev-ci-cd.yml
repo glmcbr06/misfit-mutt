@@ -26,4 +26,4 @@ jobs:
           ssh-keyscan $HOST >> ~/.ssh/known_hosts
 
           # SSH TO DEV INSTANCE
-          ssh -T -i ~/.ssh/dev_key $USER@$HOST
+          ssh -T -i ~/.ssh/dev_key -vvv $USER@$HOST "echo 'SSH Test'"
