@@ -19,26 +19,13 @@ jobs:
           HOST: ${{ secrets.GCP_DEV_HOST }}
           USER: ${{ secrets.GCP_DEV_USER }}
         run: |
-          # # SETUP SSH KEY IN GIT ACTIONS RUNNER ENV
-          # mkdir -p ~/.ssh
-          # echo "$KEY" > ~/.ssh/dev_key
-          # chmod 600 ~/.ssh/dev_key
-          # ssh-keyscan $HOST >> ~/.ssh/known_hosts
-
-          # # SSH TO DEV INSTANCE
-          # ssh -i ~/.ssh/dev_key $USER@$HOST << 'ENDSSH'
-          # ENDSSH
-
-          # start ssh
-          eval "$(ssh-agent -s)"
-          # add
-          ssh-add - <<< "$KEY"
-          
-          # hosts
+          # SETUP SSH KEY IN GIT ACTIONS RUNNER ENV
+          mkdir -p ~/.ssh
+          echo "$KEY" > ~/.ssh/dev_key
+          chmod 600 ~/.ssh/dev_key
           ssh-keyscan $HOST >> ~/.ssh/known_hosts
 
-          # ssh
-          ssh $USER@HOST "deployment commands"
-
-          ssh -i ~/.ssh/dev_key $USER@$HOST "echo 'SSH connection successful'"
+          # SSH TO DEV INSTANCE
+          ssh -i ~/.ssh/dev_key $USER@$HOST << 'ENDSSH'
+          ENDSSH
 
