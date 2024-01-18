@@ -27,6 +27,7 @@ jobs:
         USER: ${{ secrets.GCP_DEV_USER }}
         BRANCH_NAME: ${{ env.BRANCH_NAME }}
       run: |
+        echo "BRANCH NAME: $BRANCH_NAME"
         # Setup SSH key in the GitHub Actions runner environment
         mkdir -p ~/.ssh
         echo "$SSH_PRIVATE_KEY" > ~/.ssh/dev_key
