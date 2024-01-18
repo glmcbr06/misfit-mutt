@@ -3,7 +3,7 @@ name: CI/CD PROD Pipeline
 on:
   push:
     branches:
-        - 'feature/**'
+        - 'master'
 
 jobs:
     deploy:
@@ -26,4 +26,7 @@ jobs:
 
             # SSH into the GCE instance and execute deployment commands
             ssh -i ~/.ssh/dev_key $USER@$HOST << 'ENDSSH'
+              # Commands to run on the GCE instance
+              cd /var/www/html/misfit-mutt
+              git pull
             ENDSSH
