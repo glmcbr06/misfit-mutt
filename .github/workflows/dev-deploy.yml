@@ -3,7 +3,7 @@ name: CI/CD DEV Pipeline
 on:
   push:
     branches:
-        - 'feature/**'
+        - 'feat-**'
         # - '!master'   # excludes master
 
 jobs:
@@ -13,12 +13,21 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
 
+    - name: Get Branch Name
+      shell: bash
+      run: |
+       BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/}) 
+       echo "BRANCH NAME: $BRANCH_NAME"
+       echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+
     - name: Deploy to GCE Instance
       env:
         SSH_PRIVATE_KEY: ${{ secrets.GCP_DEV_KEY }}
         HOST: ${{ secrets.GCP_DEV_HOST }}
         USER: ${{ secrets.GCP_DEV_USER }}
+        BRANCH_NAME: ${{ env.BRANCH_NAME }}
       run: |
+        echo "BRANCH NAME: $BRANCH_NAME"
         # Setup SSH key in the GitHub Actions runner environment
         mkdir -p ~/.ssh
         echo "$SSH_PRIVATE_KEY" > ~/.ssh/dev_key
@@ -29,5 +38,16 @@ jobs:
         ssh -i ~/.ssh/dev_key $USER@$HOST << 'ENDSSH'
           # Commands to run on the GCE instance
           cd /var/www/html/misfit-mutt
-          git pull
+          echo "Fetching from origin..."
+          git fetch
+          echo "Checking out branch: $BRANCH_NAME"
+          git checkout $BRANCH_NAME
+          if [ $? -eq 0 ]; then
+              echo "Successfully checked out branch $BRANCH_NAME"
+              git status
+              git branch
+          else
+              echo "Failed to checkout branch $BRANCH_NAME"
+          fi
+          git pull origin $BRANCH_NAME
         ENDSSH
