@@ -28,9 +28,6 @@ jobs:
         # SSH into the GCE instance and execute deployment commands
         ssh -i ~/.ssh/dev_key $USER@$HOST << 'ENDSSH'
           # Commands to run on the GCE instance
-          # These should be the steps to deploy your application
-          # Example:
           cd /var/www/html/misfit-mutt
           git pull
-          # Any other deployment commands
         ENDSSH
