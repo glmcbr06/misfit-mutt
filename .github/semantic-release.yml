@@ -1,0 +1,28 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - master
+      - 'feat/**'
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check Out Repository
+      uses: actions/checkout@v2
+
+    # Add steps for your build and test process here
+
+    - name: Semantic Release
+      id: semantic
+      run: |
+        npx semantic-release
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }} # If you're publishing to NPM
+
+    - name: Print Release Version
+      if: steps.semantic.outputs.version != null
+      run: echo "Released Version ${steps.semantic.outputs.version}"
