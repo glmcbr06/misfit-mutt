@@ -10,6 +10,10 @@ jobs:
   build-and-release:
     runs-on: ubuntu-latest
     steps:
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20.8.1' # Specify the Node.js version
     - name: Check Out Repository
       uses: actions/checkout@v2
 
@@ -21,7 +25,7 @@ jobs:
         npx semantic-release
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }} # If you're publishing to NPM
+        # NPM_TOKEN: ${{ secrets.NPM_TOKEN }} # If you're publishing to NPM
 
     - name: Print Release Version
       if: steps.semantic.outputs.version != null
