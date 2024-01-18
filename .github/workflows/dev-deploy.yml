@@ -13,11 +13,17 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
 
+    - name: Get Branch Name
+      shell: bash
+      run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_ENV
+
+
     - name: Deploy to GCE Instance
       env:
         SSH_PRIVATE_KEY: ${{ secrets.GCP_DEV_KEY }}
         HOST: ${{ secrets.GCP_DEV_HOST }}
         USER: ${{ secrets.GCP_DEV_USER }}
+        BRANCH_NAME: ${{ env.BRANCH_NAME }}
       run: |
         # Setup SSH key in the GitHub Actions runner environment
         mkdir -p ~/.ssh
@@ -29,5 +35,7 @@ jobs:
         ssh -i ~/.ssh/dev_key $USER@$HOST << 'ENDSSH'
           # Commands to run on the GCE instance
           cd /var/www/html/misfit-mutt
-          git pull
+          git fetch
+          git checkout $BRANCH_NAME
+          git pull origin $BRANCH_NAME
         ENDSSH
