@@ -1,0 +1,32 @@
+name: CI/CD PROD Pipeline
+
+on:
+  push:
+    branches:
+        - 'master'
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout Repository
+          uses: actions/checkout@v2
+
+        - name: Deploy to GCE Instance
+          env: 
+            SSH_PRIVATE_KEY: ${{ secrets.GCP_PROD_KEY }}
+            HOST: ${{ secrets.GCP_PROD_HOST }}
+            USER: ${{ secrets.GCP_PROD_USER }}
+          run: |
+            # Setup SSH key in the GitHub Actions runner environment
+            mkdir -p ~/.ssh
+            echo "$SSH_PRIVATE_KEY" > ~/.ssh/dev_key
+            chmod 600 ~/.ssh/dev_key
+            ssh-keyscan $HOST >> ~/.ssh/known_hosts
+
+            # SSH into the GCE instance and execute deployment commands
+            ssh -i ~/.ssh/dev_key $USER@$HOST << 'ENDSSH'
+              # Commands to run on the GCE instance
+              cd /var/www/html/misfit-mutt
+              git pull
+            ENDSSH
