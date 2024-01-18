@@ -37,7 +37,16 @@ jobs:
         ssh -i ~/.ssh/dev_key $USER@$HOST << 'ENDSSH'
           # Commands to run on the GCE instance
           cd /var/www/html/misfit-mutt
+          echo "Fetching from origin..."
           git fetch
+          echo "Checking out branch: $BRANCH_NAME"
           git checkout $BRANCH_NAME
+          if [ $? -eq 0 ]; then
+              echo "Successfully checked out branch $BRANCH_NAME"
+              git status
+              git branch
+          else
+              echo "Failed to checkout branch $BRANCH_NAME"
+          fi
           git pull origin $BRANCH_NAME
         ENDSSH
