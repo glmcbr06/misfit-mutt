@@ -1,1 +1,1 @@
-Creating a business website and deploying on Google Cloud Platform. 
+Creating a website and deploying on Google Cloud Platform. 
